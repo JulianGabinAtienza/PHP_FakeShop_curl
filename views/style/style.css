@@ -1,0 +1,140 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 3rem;
+    margin-top: 5rem;
+}
+
+/* PAGE DES PRODUITS  */
+
+.product {
+    padding: 1rem;
+    border: solid 1px lightgray;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    -webkit-box-shadow: 1px 15px 12px -6px rgba(166,166,166,1);
+    -moz-box-shadow: 1px 15px 12px -6px rgba(166,166,166,1);
+    box-shadow: 1px 15px 12px -6px rgba(166,166,166,1);
+}
+
+img {
+    width: 200px;
+    height: 250px;
+    margin-bottom: 2rem;
+}
+
+.product h3 {
+    height: 40px;
+}
+
+.product .description {
+    height: 30px;
+}
+
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 4rem;
+    column-gap: 1rem;
+}
+
+
+/* NAVBAR  */
+
+nav {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    width: 100vw;
+    top: 0;
+    /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.44);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10.4px);
+    -webkit-backdrop-filter: blur(10.4px);
+}
+
+nav ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    margin-right: 2rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: black;
+}
+
+nav ul li {
+    margin-left: 1rem;
+}
+ul {
+    display: flex;
+}
+
+li {
+    list-style-type: none;
+}
+
+.Logo {
+    text-align: start;
+    display: inline;
+    padding-left: 100px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container img {    
+    margin-left: 15px;
+}
+
+/* Contact */
+
+body {
+    margin-top: 100px;
+}
+form {
+    width: 300px;
+    margin: 0 auto;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="email"],
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.error {
+    color: red;
+}
