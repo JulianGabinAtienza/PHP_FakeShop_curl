@@ -12,9 +12,11 @@
 
 <?php
 
-    require_once '../views/signup.view.php';
+    ob_start();
 
-    if (($_SERVER['REQUEST_METHOD'] === 'POST' && $password === $confirm)) {
+    include "../config/db_config.php";
+
+    if (($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['password'] === $_POST['confirm'])) {
 
         if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['confirm'])) {
             
@@ -30,7 +32,22 @@
 
             } 
 
-            
+            $hash = password_hash($password, PASSWORD_DEFAULT);
+
+            $sql = "INSERT INTO users (name, email, password) VALUES (?, ?, ?)";
+
+            $stmt = $pdo->prepare($sql);
+            $result = $stmt->execute([$name, $email, $hash]);
+
+            if ($result) {
+                header("Location: signup-success.view.php");
+                ob_end_flush();
+
+            } else {
+
+                $error = "Une erreur est survenue" . $stmt->errorInfo();
+
+            }
 
         } else {
 
