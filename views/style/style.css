@@ -138,3 +138,18 @@ input[type="submit"]:hover {
 .error {
     color: red;
 }
+
+/* Cart */
+
+.deleteBtn {
+    background-color: #f44336;
+    color: white;
+}
+
+/* Profil */
+
+.avatar {
+    width: 10rem;
+    height: 7rem;
+    border-radius: 5px;
+}

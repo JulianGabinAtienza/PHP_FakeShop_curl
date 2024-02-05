@@ -1,57 +1,62 @@
 <?php 
 
-include "../partials/header.php"; 
+ob_start();
+
+include "../partials/header.php";
 include "../config/db_config.php";
-include "../utils/functions.php";
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
+if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    if (!empty($_POST['email']) && !empty($_POST['password'])) {
-
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-
-            echo "L'email n'est pas au bon format.";
-            exit;
-    
-        }
-
-        $sql = "SELECT * FROM users WHERE email = ?";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([$email]);
-        $user = $stmt->fetch();
-
-        if (!$user) {
-            echo "Cet email n'existe pas";
-            exit;
-        }
-
-        if (password_verify($password, $user['password'])) {
-
-            header("Location: index.view.php");
-            exit;
-
-        } else {
-
-            echo "Ce mot de passe n'existe pas";
-            exit;
-
-        }
-
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $error = "Le format de l'email n'est pas bon";
+        die();
     }
 
+    // Pour vérifier si un mail correspond en BDD
+    $sql = "SELECT * FROM users WHERE email = ?";
+    $stmt = $pdo->prepare($sql);
+
+    $stmt->execute([$email]);
+    $result = $stmt->fetch();
+
+    if (!$result) {
+        $error = "L'email n''existe pas, veuillez vous enregistrer via notre Signup";
+    } else {
+        $hash = $result['password'];
+
+        if (password_verify($password, $hash)) {
+            // On peut démarrer une session
+            session_start();
+            $_SESSION['user'] = $result;
+            $_SESSION['user']['logged'] = true;
+            
+            // On redirige vers une page home ou profile
+            header('Location: profile.view.php');
+            ob_end_flush();
+        } else {
+            $error = "Le mot de passe n'est pas le bon";
+        }
+    }
 }
 
 ?>
 
-<h1>Login</h1>
-<form method="post">
-    <input type="email" name="email" placeholder="Votre email ici ..." id="">
-    <input type="password" name="password" placeholder="Votre mot de passe ici ..." id="">
-    <input type="submit" value="Login">
-</form>
-<a href="signup.view.php">SignUp</a>
+<h1>LOGIN</h1>
 
-<?php include "../partials/footer.php"; ?>
+<form class="login-form" method="POST">
+    <input type="email" name="email" placeholder="Votre email ici ...">
+    <input type="password" name="password" placeholder="Votre mot de passe ici ...">
+    <input type="submit" name="submit" value="Login">
+</form>
+
+<?php if (isset($error)) : ?> 
+    <p class="error"><?= $error ?></p>
+<?php endif ?>
+
+<?php 
+
+include "../partials/footer.php";
+
+?>
