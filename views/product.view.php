@@ -12,20 +12,20 @@ if (isset($_GET['product'])) {
 
 ?> 
 
-<h1>Page produit</h1>
+    <h1>Page produit</h1>
 
-<?php foreach($products as $product) : ?>
+   <?php foreach($products as $product) : ?>
     
-    <?php if ($product['id'] == $product_id) : ?>
+        <?php if ($product['id'] == $product_id) : ?>
 
-        <img src="<?= $product['image'] ?>">
-        <h3><?= $product['title'] ?></h3>
-        <p>Prix : <?= $product['price'] ?> $</p>
-        <p class="description"><?= substr($product['description'], 1, 50) ?> ...</p>
-        <button><a>Ajouter au panier</a></button>
+            <img src="<?= $product['image'] ?>">
+            <h3><?= $product['title'] ?></h3>
+            <p>Prix : <?= $product['price'] ?> $</p>
+            <p class="description"><?= substr($product['description'], 1, 50) ?> ...</p>
+            <button><a href="cart.view.php?product=<?= $product['id'] ?>">Ajouter au panier</a></button>
 
-    <?php endif ?>
+        <?php endif ?>
 
-<?php endforeach ?>
+    <?php endforeach ?>
 
 <?php include "../partials/footer.php"; ?>

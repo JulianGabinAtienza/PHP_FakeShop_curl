@@ -8,9 +8,11 @@ include "../partials/header.php";
 
 // Si dans l'URL on a un paramètre product qui vaut un id alors on crée une variable
 // product_id contenant le fameux id
-$product_id = isset($_GET['product']) ? $_GET['product'] : null;
+if (isset($_GET['product'])) {
+    $product_id = $_GET['product'];
+}
 
-?>
+?> 
 
 <h1>Cart</h1>
 
@@ -18,7 +20,7 @@ $product_id = isset($_GET['product']) ? $_GET['product'] : null;
 On l'ajoute ensuite à la session au niveau de la clé cart  -->
 <?php foreach($products as $product) : ?>
  
-     <?php if ($product['id'] == $product_id) : ?>
+     <?php if (isset($product_id) && $product['id'] == $product_id) : ?>
 
         <?php $_SESSION['user']['cart'][$product_id]  = $product ?>
         <h2>Vous avez ajouté <?= $_SESSION['user']['cart'][$product_id]['title']  ?> au panier</h2>
@@ -32,19 +34,20 @@ On l'ajoute ensuite à la session au niveau de la clé cart  -->
 
     <?php foreach ($_SESSION['user']['cart'] as $item) : ?>
 
-        <?php if (isset($item['title'])) : ?>
+        <h3><?= $item['title'] ?></h3>
+        <p>Prix : <?= $item['price'] ?> $</p>
+        <p class="description"><?= substr($item['description'], 1, 50) ?> ...</p>
 
-            <h3><?= $item['title'] ?></h3>
-            <p>Prix : <?= $item['price'] ?> $</p>
-            <p class="description"><?= isset($item['description']) ? substr($item['description'], 1, 50) . ' ...' : '' ?></p>
-            <a class="deleteBtn" href="">Supprimer du Panier</a> <br>
-
-            
-        <?php endif ?>
+        <!-- Ici on veut avec unset supprimer l'élément du panier via son id -->
+        <a class="delete-btn" href="delete-product.php?delete=<?= $item['id'] ?>">Supprimer du panier</a>
 
     <?php endforeach ?>
 
- <?php endif  ?>
+<?php else : ?>
+
+    <h2>Votre panier est vide ...</h2>
+
+<?php endif  ?>
 
  <!-- Lien vers la page de checkout / paiement -->
  <a href="checkout.view.php">Allez au checkout</a>

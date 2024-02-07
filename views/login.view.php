@@ -40,7 +40,6 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         }
     }
 }
-
 ?>
 
 <h1>LOGIN</h1>

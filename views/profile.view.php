@@ -3,71 +3,54 @@
 ob_start();
 
 include "../partials/header.php"; 
-
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+session_start();
 
 ob_end_flush();
 
 ?>
+<!-- 
+Il faudrait afficher le nom, l'avatar, la date de création du compte, l'email -->
 
-<style>
-    .container {
-    display: flex;
-    width: 50%;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #f2f2f2;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
+<h1>Profil</h1>
 
-.container .left {
-    flex: 1;
-    text-align: center;
-}
+<!-- Ici afficher un avatar par défaut -->
 
-.container .left .avatar {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.container .right {
-    flex: 2;
-    
-}
-
-.container h3 {
-    font-size: 18px;
-    margin-bottom: 10px;
-}
-
-.container hr.solid {
-    border-top: 1px solid #999;
-}
-
-.container p {
-    margin: 5px 0;
-}
-</style>
-
-<h1>Profil de <?= $_SESSION['user']['name'] ?></h1>
-
-<div class="container">
-    <div class="left" style="width:100vw;">
-        <img class="avatar" src="../assets/avatar/avatar.jpg" alt="">
-        <p>Nom : <?= $_SESSION['user']['name'] ?></p>
+<div class="profile-card">
+    <div class="left">
+        <img class="avatar" src="../<?= $_SESSION['user']['avatar'] ?>">
+        <h2><?= $_SESSION['user']['name'] ?></h2>
     </div>
-    <div class="right" style="width:100vw;">
-        <h3>Informations personnelles</h3>
-        <hr class="solid">
-        <p>Email : <?= $_SESSION['user']['email'] ?> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Téléphone : 06 06 06 06 06</p>
+    <div class="right">
+        
+        <h2>Informations</h2>
+        <hr>
+        <section class="infos">
+            <div class="email">
+                <h3>Email</h3>
+                <p><?= $_SESSION['user']['email'] ?></p>
+            </div>
+            <div class="phone">
+                <h3>Phone</h3>
+                <p>0789675323</p>
+            </div>
+        </section>
+
+
+        <h2>Projects</h2>
+        <hr>
+        <section class="projects">
+            <div class="recent">
+                <h3>Recent</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            </div>
+            <div class="viewed">
+                <h3>Most viewed</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+            </div>
+        </section>
     </div>
 </div>
+
 
 <?php 
 

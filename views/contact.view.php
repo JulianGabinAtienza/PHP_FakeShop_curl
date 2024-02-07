@@ -13,15 +13,9 @@ require_once '../vendor/autoload.php';
 
     <!-- Notre formulaire de contact avec méthode POST -->
     <form class="contact-form" method="POST">
-        <label for="email">Email :</label>
-        <input name="email" type="email">
-
-        <label for="subject">Subject : </label>
-        <input name="subject" type="text">
-
-        <label for="body">Message :</label>
-        <textarea name="body" cols="30" rows="10"></textarea>
-
+        <input name="email" type="email" placeholder="Email">
+        <input name="subject" type="text" placeholder="Sujet">
+        <textarea name="body" cols="30" rows="10" placeholder="Votre message ici ..."></textarea>
         <input id="contact-sub" name="submit" type="submit">
     </form>
 

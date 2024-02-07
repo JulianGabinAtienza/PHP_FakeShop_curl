@@ -28,13 +28,12 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
                 die();
             }
 
-            // Validation, selon les critères de la CNIL, du format du mot de passe
+            // Expression régulières pour vérifier le format du mdp 
             $regex = "/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{12,}$/";
+            // Fonction pour vérifier une regex sur une string preg_match()
             $passValid = preg_match($regex, $password);
 
             if ($passValid) {
-                // On vérifie que le mdp correspone aux critères de la CNIL (12 car, au moins 1 chiffre, 1 Maj, 1 min et 1 caractère spécial)
-                // Fonction pour vérifier une regex sur une string preg_match()
 
                 // Avant d'envoyer le mdp en bdd il faut le hasher !
                 $hash = password_hash($password, PASSWORD_DEFAULT);
@@ -54,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
                     // Afficher les erreurs si il y en a, sinon un message de succès 
                     if ($result) {
                         // On redirige vers une page de succès 
-                        header('Location: signup-success.view.php');
+                        header('Location: signup-sucess.view.php');
                         // On termine notre zone tampon
                         ob_end_flush();
                     } else {
@@ -64,7 +63,6 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             } else {
                 $error = "Le format du mot de passe n'est pas le bon. Il doit faire 12 caractères au minimum et inclure une minuscule, une majuscule, un chiffre et un des caractères spéciaux suivants : #?!@$ %^&*-";
             }
-
         } else {
             $error = "Les mots de passe doivent etre identiques";
         }

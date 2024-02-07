@@ -1,7 +1,24 @@
 <?php
 
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
+session_start();
+
+// Adresse de base qu'on transforme en tableau et on sépare avec les /
+// $array = explode('/', $url);
+
+// On vient chercher le dernier item du tableau qui doit etre le nom de la page
+// $uri = $array[count($array)-1];
+
+// On fait notre opérateur ternaire et on adapte la valeur de $path
+// $uri === 'index.php' ? $path = 'views/' : $path = '';
+
+$_SERVER['REQUEST_URI'] === '/index.php' ? $path = '' : $path = '..';
+
+if ($_SERVER['REQUEST_URI'] === '/index.php') {
+    $path = '';
+    $path_css = 'views/';
+} else {
+    $path = '..';
+    $path_css = '';
 }
 
 ?> 
@@ -11,30 +28,29 @@ if (session_status() == PHP_SESSION_NONE) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Products</title>
-    <link rel="stylesheet" href="../views/style/style.css">
+    <title>Mon eshop en PHP</title>
+    <link rel="stylesheet" href="<?= $path ?>/views/style/style.css">
+    <script src="<?= $path ?>/views/scripts/app.js" defer></script>
 </head>
 <body>
-
     <nav>
-        <ul>
-            <li><a href="index.view.php">Home</a></li>
-            <li><a href="contact.view.php">Contact</a></li>
+        <img class="burger-btn" src="<?= $path ?>/assets/icons/burger.png">
+        <ul class="menu">
+            <li><a href="/index.php">Home</a></li>
+            <li><a href="<?= $path ?>/views/contact.view.php">Contact</a></li>
 
-            <?php if ($_SESSION['user']['logged']) :  ?> 
+            <?php if (isset($_SESSION['user']) && $_SESSION['user']['logged']) :  ?> 
 
-                <li><a href="products.view.php">Products</a></li>
-                <li><a href="cart.view.php">Cart</a></li>
-                <li><a href="profile.view.php">Profile</a></li>
-                
-                <li><a href="logout.view.php">Logout</a></li>
+                <li><a href="<?= $path ?>/views/products.view.php">Products</a></li>
+                <li><a href="<?= $path ?>/views/cart.view.php">Cart</a></li>
+                <li><a href="<?= $path ?>/views/profile.view.php">Profile</a></li>
+                <li><a href="<?= $path ?>/views/logout.php">Logout</a></li>
             
             <?php else : ?>
-
-                <li><a href="signup.view.php">Signup</a></li>
-                <li><a href="login.view.php">Login</a></li>
-            
+                <li><a href="<?= $path ?>/views/signup.view.php">Signup</a></li>
+                <li><a href="<?= $path ?>/views/login.view.php">Login</a></li>
             <?php endif ?>
-
         </ul>
     </nav>
+<div class="wrapper">
+

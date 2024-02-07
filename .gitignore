@@ -1,7 +1,5 @@
-.env
-
 php_mailer.php
-
+.DS_Store
 /vendor
-
 /config
+

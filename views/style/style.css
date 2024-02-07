@@ -3,10 +3,39 @@ body {
     margin: 0;
 }
 
+.wrapper {
+    padding: 5rem;
+}
+
 h1 {
     text-align: center;
     margin-bottom: 3rem;
-    margin-top: 5rem;
+}
+
+button {
+    height: 2rem;
+    background-color: darkslategrey;
+    color: white;
+    border: 1px darkslategray solid;
+    padding-left: 0.2rem;
+    border-radius: 6px;
+}
+
+button a {
+    color: white;
+    text-decoration: none;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: darkgrey;
+    font-size: 1rem;
 }
 
 /* PAGE DES PRODUITS  */
@@ -24,7 +53,7 @@ h1 {
     box-shadow: 1px 15px 12px -6px rgba(166,166,166,1);
 }
 
-img {
+.avatar, .product-img, .home-img {
     width: 200px;
     height: 250px;
     margin-bottom: 2rem;
@@ -45,14 +74,22 @@ img {
     column-gap: 1rem;
 }
 
-
 /* NAVBAR  */
 
+.burger-btn {
+    width: 2rem;
+    position: fixed;
+    left: 1rem;
+    cursor: pointer;
+}
+
 nav {
+    position: fixed;
     display: flex;
     align-items: center;
-    position: fixed;
+    justify-content: flex-end;
     width: 100vw;
+    height: 4rem;
     top: 0;
     /* From https://css.glass */
     background: rgba(255, 255, 255, 0.44);
@@ -61,11 +98,13 @@ nav {
     -webkit-backdrop-filter: blur(10.4px);
 }
 
-nav ul {
+.menu {
     display: flex;
     flex-direction: row;
-    justify-content: end;
     margin-right: 2rem;
+    position: fixed;
+    left: -20rem;
+    opacity: 0;
 }
 
 nav a {
@@ -76,80 +115,119 @@ nav a {
 nav ul li {
     margin-left: 1rem;
 }
-ul {
-    display: flex;
-}
 
 li {
     list-style-type: none;
 }
 
-.Logo {
-    text-align: start;
-    display: inline;
-    padding-left: 100px;
-}
+
+
+/* STYLE DE LA HOMEPAGE */
 
 .container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.container img {    
-    margin-left: 15px;
+/* PAGE DE CONTACT  */
+
+.contact-form, .signup-form, .login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Contact */
-
-body {
-    margin-top: 100px;
-}
-form {
-    width: 300px;
-    margin: 0 auto;
-}
-
-label {
-    display: block;
-    margin-bottom: 10px;
-}
-
-input[type="email"],
-input[type="text"],
-textarea {
-    width: 100%;
-    padding: 5px;
-    margin-bottom: 10px;
-}
+input, textarea {
+    width: 20rem;
+    height: 1.5rem;
+    margin-bottom: 1rem;
+    height: 1.5rem;
+    border-radius: 6px;
+    border: 1px solid darkgray;
+    padding-left: 0.2rem;
+} 
 
 input[type="submit"] {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 15px;
-    border: none;
     cursor: pointer;
+    width: 20.5rem;
+    height: 2rem;
+    background-color: darkslategrey;
+    color: white;
+    border: 1px darkslategray solid;
 }
 
-input[type="submit"]:hover {
-    background-color: #45a049;
+.contact-form textarea {
+    height: 10rem;
+}
+
+.contact-form label {
+    text-align: left;
 }
 
 .error {
+    text-align: center;
     color: red;
 }
 
-/* Cart */
 
-.deleteBtn {
-    background-color: #f44336;
+/* CART  */
+
+
+.delete-btn {
+    background-color: brown;
     color: white;
 }
 
-/* Profil */
+
+/* PROFILE PAGE  */
 
 .avatar {
-    width: 10rem;
-    height: 7rem;
-    border-radius: 5px;
+    width: 8.5rem;
+    height: 9rem;
+    border-radius: 100%;
+}
+
+.profile-card {
+    width: 50rem;
+    height: 25rem;
+    margin: auto;
+    display: flex;
+    -webkit-box-shadow: 1px 15px 12px -6px rgba(166,166,166,1);
+    -moz-box-shadow: 1px 15px 12px -6px rgba(166,166,166,1);
+    box-shadow: 1px 15px 12px -6px rgba(166,166,166,1);
+    border-radius: 20px;
+}
+
+.profile-card section {
+    display: flex;
+}
+
+.left {
+    background: linear-gradient(90deg, darkslategrey 0%, darkgray 100%);
+    width: 15rem;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border-bottom-left-radius: 20px;
+    border-top-left-radius: 20px;
+}
+
+.right {
+    width: 35rem;
+    padding: 1.5rem;
+}
+
+.right div {
+    width: 17.5rem;
+}
+
+.email, .phone {
+    display: block;
 }
