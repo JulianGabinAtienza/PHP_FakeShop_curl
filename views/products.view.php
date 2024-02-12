@@ -1,8 +1,8 @@
 <?php 
 
 // J'inclus la page sur laquelle je fais l'appel API pour récupérer les produits
-include "../config/curl_products.php";
-include "../partials/header.php";
+include "./config/curl_products.php";
+include "./partials/header.php";
 
 ?> 
 
@@ -12,14 +12,14 @@ include "../partials/header.php";
 
         <?php foreach($products as $product) : ?>
             <div class="product">
-                <a href="product.view.php?product=<?= $product['id'] ?>"><img class="product-img" src="<?= $product['image'] ?>"></a>
+                <a href="product?product=<?= $product['id'] ?>"><img class="product-img" src="<?= $product['image'] ?>"></a>
                 <h3><?= $product['title'] ?></h3>
                 <p>Prix : <?= $product['price'] ?> $</p>
                 <p class="description"><?= substr($product['description'], 1, 50) ?> ...</p>
-                <button><a href="cart.view.php?product=<?= $product['id'] ?>">Ajouter au panier</a></button>
+                <button><a href="cart?product=<?= $product['id'] ?>">Ajouter au panier</a></button>
             </div>
         <?php endforeach ?>
 
     </div>
 
-<?php include "../partials/footer.php"; ?>
+<?php include "./partials/footer.php"; ?>

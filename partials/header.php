@@ -11,49 +11,49 @@ session_start();
 // On fait notre opérateur ternaire et on adapte la valeur de $path
 // $uri === 'index.php' ? $path = 'views/' : $path = '';
 
-$_SERVER['REQUEST_URI'] === '/index.php' ? $path = '' : $path = '..';
+// $_SERVER['REQUEST_URI'] === '/index.php' ? $path = '' : $path = '..';
 
-if ($_SERVER['REQUEST_URI'] === '/index.php') {
-    $path = '';
-    $path_css = 'views/';
-} else {
-    $path = '..';
-    $path_css = '';
-}
+// if ($_SERVER['REQUEST_URI'] === '/index.php') {
+//     $path = '';
+//     $path_css = 'views/';
+// } else {
+//     $path = '..';
+//     $path_css = '';
+// }
 
 ?> 
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon eshop en PHP</title>
-    <link rel="stylesheet" href="<?= $path ?>/views/style/style.css">
-    <script src="<?= $path ?>/views/scripts/app.js" defer></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-</head>
-<body>
-    <nav>
-        <img class="burger-btn" src="<?= $path ?>/assets/icons/burger.png">
-        <ul class="menu">
-            <li><a href="../index.php">Home</a></li>
-            <li><a href="<?= $path ?>/views/contact.view.php">Contact</a></li>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Mon eshop en PHP</title>
+        <link rel="stylesheet" href="/views/style/style.css">
+        <script src="/views/scripts/app.js" defer></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    </head>
+    <body>
+        <nav>
+            <img class="burger-btn" src="/assets/icons/burger.png">
+            <ul class="menu">
+                <li><a href="/">Home</a></li>
+                <li><a href="contact">Contact</a></li>
 
+                <?php if (isset($_SESSION['user']) && $_SESSION['user']['logged']) :  ?> 
+
+                    <li><a href="products">Products</a></li>
+                    <li><a href="profile">Profile</a></li>
+                    <li><a href="logout">Logout</a></li>
+                
+                <?php else : ?>
+                    <li><a href="signup">Signup</a></li>
+                    <li><a href="login">Login</a></li>
+                <?php endif ?>
+            </ul>
             <?php if (isset($_SESSION['user']) && $_SESSION['user']['logged']) :  ?> 
-
-                <li><a href="<?= $path ?>/views/products.view.php">Products</a></li>
-                <li><a href="<?= $path ?>/views/profile.view.php">Profile</a></li>
-                <li><a href="<?= $path ?>/views/logout.php">Logout</a></li>
-            
-            <?php else : ?>
-                <li><a href="<?= $path ?>/views/signup.view.php">Signup</a></li>
-                <li><a href="<?= $path ?>/views/login.view.php">Login</a></li>
+                <li><a href="cart"><img class="cart-btn" src="/assets/icons/shopping-cart.png"></a>
             <?php endif ?>
-        </ul>
-        <?php if (isset($_SESSION['user']) && $_SESSION['user']['logged']) :  ?> 
-            <li><a href="<?= $path ?>/views/cart.view.php"><img class="cart-btn" src="<?= $path ?>/assets/icons/shopping-cart.png"></a>
-        <?php endif ?>
-    </nav>
-<div class="wrapper">
+        </nav>
+    <div class="wrapper">
 

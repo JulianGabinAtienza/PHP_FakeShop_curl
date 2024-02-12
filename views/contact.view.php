@@ -1,11 +1,11 @@
 <?php 
 
-include "../partials/header.php"; 
+include "./partials/header.php"; 
 
 // On requiert notre fichier php_mailer.php qui contient les constantes pour la configuration du serveur SMTP
 // ainsi que autoload.php qui permet de charger les classes PHPMailer
-require_once '../config/php_mailer.php';
-require_once '../vendor/autoload.php';
+
+require_once './vendor/autoload.php';
 
 ?>
 
@@ -26,7 +26,7 @@ require_once '../vendor/autoload.php';
 
 <?php
 
-require_once '../controllers/contact.php';
-include "../partials/footer.php";
+require_once 'controllers/contact.php';
+include "./partials/footer.php";
 
 ?>

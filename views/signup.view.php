@@ -5,9 +5,9 @@
 // Cela permet d'envoyer en une seule pièce le code ci-dessous
 ob_start();
 
-include "../partials/header.php";
-include "../config/db_config.php";
-include "../utils/functions.php";
+include "./partials/header.php";
+include "./config/db_config.php";
+include "./utils/functions.php";
 
 // On vérifie que le form ait été soumis
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
                     // Afficher les erreurs si il y en a, sinon un message de succès 
                     if ($result) {
                         // On redirige vers une page de succès 
-                        header('Location: signup-sucess.view.php');
+                        header('Location: signup-sucess');
                         // On termine notre zone tampon
                         ob_end_flush();
                     } else {
@@ -89,6 +89,6 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
 <?php 
 
-include "../partials/footer.php";
+include "./partials/footer.php";
 
 ?>

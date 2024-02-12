@@ -2,7 +2,7 @@
 
 ob_start();
 
-include "../partials/header.php";
+include "./partials/header.php";
 
 ob_end_flush();
 
@@ -53,6 +53,6 @@ Il faudrait afficher le nom, l'avatar, la date de création du compte, l'email -
 
 <?php 
 
-include "../partials/footer.php"; 
+include "./partials/footer.php"; 
 
 ?>
