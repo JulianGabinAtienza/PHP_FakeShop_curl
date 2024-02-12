@@ -2,8 +2,7 @@
 
 ob_start();
 
-include "../partials/header.php"; 
-session_start();
+include "../partials/header.php";
 
 ob_end_flush();
 
