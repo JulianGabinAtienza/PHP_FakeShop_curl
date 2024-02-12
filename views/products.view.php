@@ -4,8 +4,7 @@
 include "./config/curl_products.php";
 include "./partials/header.php";
 
-?> 
-
+?>
     <h1>Ma page de produits</h1>
 
     <div class="product-list">

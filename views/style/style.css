@@ -3,6 +3,10 @@ body {
     margin: 0;
 }
 
+::-webkit-scrollbar {
+    width: 0; /* Hide the scrollbar */
+}
+
 .wrapper {
     padding: 5rem;
 }

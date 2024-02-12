@@ -26,7 +26,7 @@ if (($_SERVER['REQUEST_METHOD'] === 'POST')) {
             $mail->SMTPAuth   = true;                                   
             $mail->Username   = $mailusername;                     
             $mail->Password   = $mailpassword;                               
-            $mail->SMTPSecure = $mailencrypt;            
+            $mail->SMTPSecure = $mailencrypt;
             $mail->Port       = $mailport;                              
 
             //Recipients / On précise les récipients pour le mail 

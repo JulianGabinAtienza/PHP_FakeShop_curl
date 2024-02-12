@@ -15,4 +15,4 @@ $mailhost = $_ENV['SMTP_HOST'];
 $mailport = $_ENV['SMTP_PORT'];
 $mailusername = $_ENV['SMTP_USERNAME'];
 $mailpassword = $_ENV['SMTP_PASSWORD'];
-$mailencryt = $_ENV['SMTP_ENCRYPTION']; 
+$mailencrypt = $_ENV['SMTP_ENCRYPTION'];
