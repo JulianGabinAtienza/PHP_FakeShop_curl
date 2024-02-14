@@ -14,6 +14,23 @@ if (isset($_GET['product'])) { $product_id = $_GET['product']; }
 
 <h1>Cart</h1>
 
+<?php
+
+    $totalCost = 0;
+    $totalArticles = 0;
+    
+    foreach ($_SESSION['user']['cart'] as $item) {
+        $totalCost += ($item['price'] * $item['quantity']);
+        $totalArticles += $item['quantity'];
+    }
+    
+?>
+
+<h4 class="center">Il y a <?= $totalArticles ?> article<?= ($totalArticles > 1) ? "s" : "" ?> dans votre Cart et le prix total est de <?= $totalCost ?> $</h4>
+
+<!-- Lien vers la page de checkout / paiement -->
+<a class="center" href="checkout"><button class="button2">Allez au checkout</button></a>
+
 <!-- On vient récupérer l'id du produit que l'on veut ajouter au panier
 On l'ajoute ensuite à la session au niveau de la clé cart  -->
 
@@ -49,18 +66,18 @@ On l'ajoute ensuite à la session au niveau de la clé cart  -->
 
     <?php foreach ($_SESSION['user']['cart'] as $item) : ?>
 
+    <div class="item">
         <h3><?= $item['title'] ?></h3>
-        <p>Prix : <?= $item['price'] ?> $</p>
+        <p>Prix unitaire : <?= $item['price'] ?> $</p>
+        <p>Prix Total d'article : <?php $item['total'] = ($item['price'] * $item['quantity']) ?> </p>
         <p class="description"><?= substr($item['description'], 1, 50) ?> ...</p>
         <p>Quantité : <?= $item['quantity'] ?></p>
 
         <!-- Ici on veut avec unset supprimer l'élément du panier via son id -->
         <a class="delete-btn" href="delete?delete=<?= $item['id'] ?>">Supprimer du panier</a>
+    </div>
 
     <?php endforeach ?>
-
-    <!-- Lien vers la page de checkout / paiement -->
-    <a href="checkout">Allez au checkout</a>
 
 <?php else : ?>
 

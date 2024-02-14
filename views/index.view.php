@@ -1,6 +1,7 @@
 <?php include "partials/header.php"; ?>
 
 <style>
+    
     body{
         overflow: hidden;
 
@@ -9,6 +10,7 @@
     .wrapper {
         padding:0;
     }
+
 </style>
 
 <div class="container" style="margin-top:130px">

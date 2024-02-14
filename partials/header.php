@@ -31,6 +31,7 @@ session_start();
         <title>Mon eshop en PHP</title>
         <link rel="stylesheet" href="/views/style/style.css">
         <link rel="stylesheet" href="/views/style/button.css">
+        <link rel="stylesheet" href="/views/style/cart.css">
         <script src="/views/scripts/app.js" defer></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     </head>
