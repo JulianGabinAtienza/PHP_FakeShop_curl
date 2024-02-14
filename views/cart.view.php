@@ -28,7 +28,7 @@ if (isset($_GET['product'])) { $product_id = $_GET['product']; }
 
 <?php if ($totalArticles > 0) : ?>
     <h4 class="center">Il y a <?= $totalArticles ?> article<?= ($totalArticles > 1) ? "s" : "" ?> dans votre Cart et le prix total est de <?= $totalCost ?> $</h4>
-    <a class="center" href="checkout"><button class="button2">Allez au checkout</button></a>
+    <a id="padding-bottom" class="center" href="checkout"><button class="button2">Allez au checkout</button></a>
 <?php endif; ?>
 
 <!-- Lien vers la page de checkout / paiement -->

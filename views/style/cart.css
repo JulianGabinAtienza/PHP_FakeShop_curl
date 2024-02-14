@@ -1,9 +1,12 @@
+#padding-bottom {
+    padding-bottom: 20px;
+}
+
 .center {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-
 }
 
 .item {
@@ -12,6 +15,7 @@
     align-items: center;
     margin: 10px;
     padding: 10px;
+    padding-bottom: 30px;
     border: 1px solid #000;
     border-radius: 5px;
     background-color: #ffffff;
