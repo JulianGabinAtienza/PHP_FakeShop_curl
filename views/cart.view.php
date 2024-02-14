@@ -18,18 +18,21 @@ if (isset($_GET['product'])) { $product_id = $_GET['product']; }
 
     $totalCost = 0;
     $totalArticles = 0;
-    
+
     foreach ($_SESSION['user']['cart'] as $item) {
         $totalCost += ($item['price'] * $item['quantity']);
         $totalArticles += $item['quantity'];
     }
-    
+
 ?>
 
-<h4 class="center">Il y a <?= $totalArticles ?> article<?= ($totalArticles > 1) ? "s" : "" ?> dans votre Cart et le prix total est de <?= $totalCost ?> $</h4>
+<?php if ($totalArticles > 0) : ?>
+    <h4 class="center">Il y a <?= $totalArticles ?> article<?= ($totalArticles > 1) ? "s" : "" ?> dans votre Cart et le prix total est de <?= $totalCost ?> $</h4>
+    <a class="center" href="checkout"><button class="button2">Allez au checkout</button></a>
+<?php endif; ?>
 
 <!-- Lien vers la page de checkout / paiement -->
-<a class="center" href="checkout"><button class="button2">Allez au checkout</button></a>
+
 
 <!-- On vient récupérer l'id du produit que l'on veut ajouter au panier
 On l'ajoute ensuite à la session au niveau de la clé cart  -->
