@@ -5,6 +5,8 @@ include "config/curl_products.php";
 include "partials/header.php";
 include 'utils/functions.php';
 
+ob_start();
+
 // Si dans l'URL on a un paramètre product qui vaut un id alors on crée une variable
 // product_id contenant le fameux id
 
@@ -58,6 +60,7 @@ On l'ajoute ensuite à la session au niveau de la clé cart  -->
 
         $_SESSION['user']['cart'][$product_id]['quantity']  += 1; 
         header('Location: cart');
+        ob_end_flush();
 
      } ?>
 
