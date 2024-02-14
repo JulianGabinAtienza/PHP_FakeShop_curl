@@ -8,12 +8,12 @@ class Voiture {
 
     public function accelerer() {
         $this->vitesse += 50;
-        return "La $this->marque $this->couleur roule à $this->vitesse km/h<br>";
+        return "La $this->marque $this->couleur roule à $this->vitesse km/h";
     }
 
     public function freiner() {
         $this->vitesse -= 50;
-        return "La $this->marque $this->couleur roule à $this->vitesse km/h<br>";
+        return "La $this->marque $this->couleur roule à $this->vitesse km/h";
     }
 
     public function __construct($marque, $couleur) {
@@ -35,7 +35,7 @@ class Voiture {
 
     public function accident($Voiture) {
         $this->vitesse = 0;
-        return "La $this->marque a eu un accident avec la $Voiture->marque<br>";
+        return "La $this->marque a eu un accident avec la $Voiture->marque";
     }
 }
 
