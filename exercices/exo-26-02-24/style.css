@@ -1,0 +1,10 @@
+.list {
+    display: flex;
+    grid-template-columns: repeat(2, 300px);
+}
+
+img {
+    width: 8rem;
+    height: 8rem;
+    border-radius: 100px;
+}
