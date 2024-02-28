@@ -2,3 +2,5 @@ php_mailer.php
 /vendor
 /config
 .env
+allName.js
+/exercices/randomNameGiver/allName.js
