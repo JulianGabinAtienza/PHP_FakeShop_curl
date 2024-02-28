@@ -1,0 +1,60 @@
+body {
+    background: linear-gradient(darkorange, darkred);
+    background-repeat: no-repeat;
+    background-size:cover ;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+h1 {
+    color: white;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    padding-top: 10rem;
+}
+
+.add-todo {
+    margin-top: 2rem;
+    display: flex;
+}
+
+.add-todo button {
+    width: 3rem;
+    font-size: 1.5rem;
+    margin-left: 0.5rem;
+}
+
+.add-todo input {
+    width: 12rem;
+    padding: 0.3rem 0.5rem;
+}
+
+.deleteBtn {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+li {
+    width: 12rem;
+    border: solid 1px lightgray;
+    color: white;
+    padding: 0.5rem;
+    background-color: darkred;
+    position: relative;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.checked {
+    text-decoration: line-through;
+    opacity: 0.4;
+}
