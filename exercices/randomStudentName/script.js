@@ -5,7 +5,6 @@ const randomNameGiver = () => {
     return allName[randomIndex];
 }
 
-const btn = document.querySelector('.btn');
 const name = document.querySelector('.name');
 const stop = document.querySelector('.stop');
 
@@ -18,9 +17,3 @@ myInterval = setInterval(() => {
 stop.addEventListener('click', () => {
     clearInterval(myInterval);
 });
-
-window.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') {
-        btn.click();
-    }
-})
